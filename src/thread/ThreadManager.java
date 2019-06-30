@@ -13,7 +13,7 @@ public class ThreadManager implements Runnable {
 	private Integer threadNumber;
 	
 	private static final Integer RANDOM_BOUND = 1000000;
-	private static final Integer NUMBER_PER_FILE = 100000;
+	private static final Integer NUMBER_PER_FILE = 10;
 	private static final String FILE_NAME_PREFIX = "C:\\Users\\Furkan Özcan\\Desktop\\XmlResults\\xmlResult";
 	private static final String FILE_NAME_XML = ".xml";
 	
