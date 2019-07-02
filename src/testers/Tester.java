@@ -24,16 +24,9 @@ public class Tester {
 		}
 		*/
 		
-		
-		/*
-		MergeSort ms = new MergeSort();
-		*/
-		
-		
 		RandomNumberGenerator instanceRandomNumberGenerator = RandomNumberGenerator.getInstance();
 		List<Integer> randomList = instanceRandomNumberGenerator.createRandomList(10, 1, 10);
-		
-		
+				
 		/*
 		SelectionSort ss = new SelectionSort();
 		//System.out.println(randomList.toString());
@@ -53,6 +46,14 @@ public class Tester {
 		System.out.println("ss execution: " + (ssFinish - ssStart));
 		//System.out.println(sortedList.toString());
 		*/
+		
+		MergeSort ms = new MergeSort();
+		System.out.println(randomList.toString());
+		long ssStart = System.currentTimeMillis();
+		List<Integer> sortedList = ms.sort(randomList);
+		long ssFinish = System.currentTimeMillis();
+		System.out.println("ss execution: " + (ssFinish - ssStart));
+		System.out.println(sortedList.toString());
 	}
 
 }
