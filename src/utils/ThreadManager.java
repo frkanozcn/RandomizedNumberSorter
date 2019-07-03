@@ -10,6 +10,7 @@ import java.util.Random;
 
 import builders.Xml;
 import builders.XmlBuilder;
+import sorters.SorterFactory;
 
 public class ThreadManager implements Runnable {
 	private Thread thread;
@@ -62,6 +63,8 @@ public class ThreadManager implements Runnable {
 
 		// sort random list
 		List<Integer> sortedList = sort(mapRandom, sortType);
+		
+		// write sortedList to file
 
 	}
 
@@ -115,7 +118,7 @@ public class ThreadManager implements Runnable {
 	}
 
 	private static List<Integer> sort(HashMap<Integer, Integer> mapRandom, String sortType) {
-		// TODO Auto-generated method stub
+		SorterFactory sf = new SorterFactory();
 		return null;
 	}
 

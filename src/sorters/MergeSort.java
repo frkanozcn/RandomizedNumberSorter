@@ -1,8 +1,9 @@
 package sorters;
 
+import java.util.HashMap;
 import java.util.List;
 
-public class MergeSort {
+public class MergeSort implements Sort {
 
 	public MergeSort() {
 	}
@@ -83,5 +84,11 @@ public class MergeSort {
 
 	private static boolean isEmptyOrNull(List<Integer> list) {
 		return list == null || list.size() == 0;
+	}
+
+	@Override
+	public HashMap<Integer, Integer> sort(HashMap<Integer, Integer> mapRandom) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

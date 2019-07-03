@@ -1,9 +1,10 @@
 package sorters;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class InsertionSort {
+public class InsertionSort implements Sort {
 
 	public InsertionSort() {
 	}
@@ -33,6 +34,12 @@ public class InsertionSort {
 		}
 
 		return resultList;
+	}
+
+	@Override
+	public HashMap<Integer, Integer> sort(HashMap<Integer, Integer> mapRandom) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

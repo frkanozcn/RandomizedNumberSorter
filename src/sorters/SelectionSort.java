@@ -1,9 +1,10 @@
 package sorters;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class SelectionSort {
+public class SelectionSort implements Sort {
 
 	public SelectionSort() {
 	}
@@ -28,6 +29,12 @@ public class SelectionSort {
 		}
 
 		return resultList;
+	}
+
+	@Override
+	public HashMap<Integer, Integer> sort(HashMap<Integer, Integer> mapRandom) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
