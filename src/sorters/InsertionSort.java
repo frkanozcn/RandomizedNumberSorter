@@ -6,16 +6,15 @@ import java.util.List;
 public class InsertionSort {
 
 	public InsertionSort() {
-		// TODO Auto-generated constructor stub
 	}
-	
+
 	public List<Integer> sort(List<Integer> list) {
 		List<Integer> resultList = new ArrayList<Integer>();
-		
+
 		if (list == null || list.size() == 0) {
 			return resultList;
 		}
-		
+
 		while (list.size() > 0) {
 			Integer curr = list.remove(0);
 			boolean isInserted = false;
@@ -32,7 +31,7 @@ public class InsertionSort {
 				continue;
 			}
 		}
-		
+
 		return resultList;
 	}
 

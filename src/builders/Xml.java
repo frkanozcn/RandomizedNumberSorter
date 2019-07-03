@@ -1,36 +1,47 @@
 package builders;
 
+import java.util.Arrays;
+
 public class Xml {
-	private int occurence;
+	private Integer occurence;
 	private Integer number;
 	private Integer rank;
 
-	public Xml(XmlBuilder xmlBuilder) {
-		this.occurence = xmlBuilder.occurence;
-		this.number = xmlBuilder.number;
-		this.rank = xmlBuilder.rank;
+	public Xml() {
 	}
-	
-	public static class XmlBuilder {
-		private int occurence;
-		private Integer number;
-		private Integer rank;
-		
-		public XmlBuilder setOccurence(int occurence) {
-			this.occurence = occurence;
-			return this;
-		}
-		
-		public XmlBuilder setNumber(Integer number) {
-			this.number = number;
-			return this;
-		}
-		
-		public XmlBuilder setRank(Integer rank) {
-			this.rank = rank;
-			return this;
-		}
-		
+
+	/**
+	 * This may be completely unnecessary
+	 * 
+	 * @param xmlBuilder
+	 */
+	public Xml(XmlBuilder xmlBuilder) {
+		Xml xmlInstance = xml(xmlBuilder);
+		this.occurence = xmlInstance.getOccurence();
+		this.number = xmlInstance.getNumber();
+		this.rank = xmlInstance.getRank();
+	}
+
+	/**
+	 * This may be completely unnecessary as well
+	 * 
+	 * @param xmlBuilder
+	 * @return
+	 */
+	private Xml xml(XmlBuilder xmlBuilder) {
+		return xmlBuilder.buildXml();
+	}
+
+	public Integer getOccurence() {
+		return this.occurence;
+	}
+
+	public Integer getNumber() {
+		return number;
+	}
+
+	public Integer getRank() {
+		return rank;
 	}
 
 }
