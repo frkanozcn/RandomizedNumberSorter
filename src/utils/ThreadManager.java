@@ -62,7 +62,7 @@ public class ThreadManager implements Runnable {
 		mapRandom = createHashMapFromRandomList(randomList);
 
 		// sort random list
-		List<Integer> sortedList = sort(mapRandom, sortType);
+		HashMap<Integer, Integer> sortedMap = sort(mapRandom, sortType);
 		
 		// TODO: write sortedList to file
 
@@ -113,14 +113,21 @@ public class ThreadManager implements Runnable {
 	}
 
 	private static HashMap<Integer, Integer> createHashMapFromRandomList(List<Integer> randomList) {
-		// TODO Auto-generated method stub
+		HashMap<Integer, Integer> resultMap = new HashMap<>();
+		for (Integer integer : randomList) {
+			if (resultMap.containsKey(integer)) {
+				int occurence = resultMap.get(integer);
+				resultMap.put(integer, occurence + 1);
+			} else {
+				resultMap.put(integer, 1);
+			}
+		}
 		return null;
 	}
 
-	private static List<Integer> sort(HashMap<Integer, Integer> mapRandom, String sortType) {
-		// TODO Auto-generated method stub
+	private static HashMap<Integer, Integer> sort(HashMap<Integer, Integer> mapRandom, String sortType) {
 		SorterFactory sf = new SorterFactory();
-		return null;
+		return sf.getSortMethod(sortType).sort(mapRandom);
 	}
 
 	private static void print(String inputString) {
