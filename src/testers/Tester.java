@@ -34,6 +34,8 @@ public class Tester {
 			threadManager.start();
 		}
 		*/
+		
+		// TODO: collect all HashMap's from all sorted files
 	}
 
 	private static String getSortTypeFromConsole() throws IOException {
