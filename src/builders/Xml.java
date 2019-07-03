@@ -1,7 +1,5 @@
 package builders;
 
-import java.util.Arrays;
-
 public class Xml {
 	private Integer occurence;
 	private Integer number;
