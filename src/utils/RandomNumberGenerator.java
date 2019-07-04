@@ -38,12 +38,4 @@ public class RandomNumberGenerator {
 		return integerList;
 	}
 
-	private static List<Integer> copyList(List<Integer> list) {
-		List<Integer> rList = new ArrayList<Integer>();
-		for (Integer l : list) {
-			rList.add(l);
-		}
-		return rList;
-	}
-
 }

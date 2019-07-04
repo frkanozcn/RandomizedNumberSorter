@@ -1,6 +1,5 @@
 package sorters;
 
-import java.util.HashMap;
 import java.util.List;
 
 import builders.Xml;
@@ -9,7 +8,7 @@ public class MergeSort implements Sort {
 
 	public MergeSort() {
 	}
-	
+
 	private void sortHelper(Xml[] array, int f, int l) {
 		if (f < l) { // list can still be divided
 			int m = (f + l) / 2; // middle index
@@ -66,7 +65,7 @@ public class MergeSort implements Sort {
 	private static boolean isEmptyOrNull(List<Xml> list) {
 		return list == null || list.size() == 0;
 	}
-	
+
 	@Override
 	public List<Xml> sortXml(List<Xml> list) {
 		if (isEmptyOrNull(list)) {

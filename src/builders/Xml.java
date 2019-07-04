@@ -8,28 +8,12 @@ public class Xml {
 	public Xml() {
 	}
 
-	/**
-	 * This may be completely unnecessary
-	 * 
-	 * @param xmlBuilder
-	 */
-	public Xml(XmlBuilder xmlBuilder) {
-		Xml xmlInstance = xml(xmlBuilder);
-		this.occurence = xmlInstance.getOccurence();
-		this.number = xmlInstance.getNumber();
-		this.rank = xmlInstance.getRank();
+	public Xml(Integer occurence, Integer number, Integer rank) {
+		this.occurence = occurence;
+		this.number = number;
+		this.rank = rank;
 	}
-
-	/**
-	 * This may be completely unnecessary as well
-	 * 
-	 * @param xmlBuilder
-	 * @return
-	 */
-	private Xml xml(XmlBuilder xmlBuilder) {
-		return xmlBuilder.buildXml();
-	}
-
+	
 	public Integer getOccurence() {
 		return this.occurence;
 	}
@@ -40,6 +24,34 @@ public class Xml {
 
 	public Integer getRank() {
 		return rank;
+	}
+	
+	public static class XmlBuilder {
+		private Integer occurence;
+		private Integer number;
+		private Integer rank;
+
+		public XmlBuilder() {
+		}
+		
+		public XmlBuilder setOccurence(int occurence) {
+			this.occurence = occurence;
+			return this;
+		}
+
+		public XmlBuilder setNumber(Integer number) {
+			this.number = number;
+			return this;
+		}
+
+		public XmlBuilder setRank(Integer rank) {
+			this.rank = rank;
+			return this;
+		}
+		
+		public Xml build() {
+			return new Xml(occurence, number, rank);
+		}
 	}
 	
 	public int compareTo(Xml anotherXml) {

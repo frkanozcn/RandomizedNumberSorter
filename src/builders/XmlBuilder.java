@@ -20,9 +20,11 @@ public class XmlBuilder {
 		return this;
 	}
 
+	/*
 	public Xml buildXml() {
 		return new Xml(this);
 	}
+	*/
 
 	public Integer getOccurence() {
 		return occurence;

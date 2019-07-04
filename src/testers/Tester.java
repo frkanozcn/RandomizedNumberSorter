@@ -17,24 +17,16 @@ public class Tester {
 	}
 
 	public static void main(String[] args) throws Throwable {
+
 		String sortType = getSortTypeFromConsole();
 
 		System.out.println(sortType);
 
-		/*
 		for (int instance = 0; instance < NUMBER_OF_ITERATIONS; instance++) {
 			ThreadManager threadManager = ThreadManager.getInstance(instance, sortType);
 			threadManager.start();
 		}
-		*/
 
-		/*
-		for (int iteration = 0; iteration < NUMBER_OF_ITERATIONS; iteration++) {
-			ThreadManager threadManager = new ThreadManager(iteration + 1);
-			threadManager.start();
-		}
-		*/
-		
 		// TODO: collect all HashMap's from all sorted files
 	}
 
