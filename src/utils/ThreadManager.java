@@ -57,12 +57,22 @@ public class ThreadManager implements Runnable {
 		// writeToFile
 		writeToFile(completeFileName, xmlResult);
 
+		/*
 		// random list to hash map with <number, occurence> pairs
 		HashMap<Integer, Integer> mapRandom = new HashMap<>(NUMBER_PER_FILE);
 		mapRandom = createHashMapFromRandomList(randomList);
-
+		*/
+		
+		/*
 		// sort random list
 		HashMap<Integer, Integer> sortedMap = sort(mapRandom, sortType);
+		*/
+		
+		// random list to Xml list
+		List<Xml> xmlList = createXmlListFromRandomList(randomList);
+		
+		// sort random list
+		List<Xml> sortedXmlList = sort(xmlList, sortType);
 		
 		// TODO: write sortedList to file
 
@@ -124,10 +134,54 @@ public class ThreadManager implements Runnable {
 		}
 		return null;
 	}
+	
+	private static List<Xml> createXmlListFromRandomList(List<Integer> randomList) {
+		List<Xml> resultList = new ArrayList<Xml>();
+		for (Integer integer : randomList) {
+			int foundIndex = isInXmlList(integer, resultList);
+			if (foundIndex > -1) {
+				Integer occurence = resultList.get(foundIndex).getOccurence();
+				XmlBuilder xmlBuilder = new XmlBuilder();
+				xmlBuilder.setNumber(integer);
+				xmlBuilder.setOccurence(occurence + 1);
+				Xml xml = new Xml(xmlBuilder);
+				resultList.set(foundIndex, xml);
+			} else {
+				XmlBuilder xmlBuilder = new XmlBuilder();
+				xmlBuilder.setNumber(integer);
+				xmlBuilder.setOccurence(1);
+				Xml xml = new Xml(xmlBuilder);
+				resultList.add(xml);
+			}
+		}
+		return resultList;
+	}
+	
+	/**
+	 * 
+	 * @param integer
+	 * @param xmlList
+	 * @returns the index of found location. Default (not found) is -1
+	 */
+	private static int isInXmlList(Integer integer, List<Xml> xmlList) {
+		if (xmlList == null || xmlList.isEmpty())
+			return -1;
+		
+		for (int i = 0; i < xmlList.size(); i++) {
+			if (xmlList.get(i).getNumber().compareTo(integer) == 0)
+				return i;
+		}
+		return -1;
+	}
 
 	private static HashMap<Integer, Integer> sort(HashMap<Integer, Integer> mapRandom, String sortType) {
 		SorterFactory sf = new SorterFactory();
 		return sf.getSortMethod(sortType).sort(mapRandom);
+	}
+	
+	private static List<Xml> sort(List<Xml> xmlList, String sortType) {
+		SorterFactory sf = new SorterFactory();
+		return sf.getSortMethod(sortType).sortXml(xmlList);
 	}
 
 	private static void print(String inputString) {

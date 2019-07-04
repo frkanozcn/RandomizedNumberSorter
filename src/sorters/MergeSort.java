@@ -3,6 +3,8 @@ package sorters;
 import java.util.HashMap;
 import java.util.List;
 
+import builders.Xml;
+
 public class MergeSort implements Sort {
 
 	public MergeSort() {
@@ -88,6 +90,12 @@ public class MergeSort implements Sort {
 
 	@Override
 	public HashMap<Integer, Integer> sort(HashMap<Integer, Integer> mapRandom) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Xml> sortXml(List<Xml> xmlList) {
 		// TODO Auto-generated method stub
 		return null;
 	}

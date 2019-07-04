@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import builders.Xml;
+
 public class SelectionSort implements Sort {
 
 	public SelectionSort() {
@@ -33,6 +35,12 @@ public class SelectionSort implements Sort {
 
 	@Override
 	public HashMap<Integer, Integer> sort(HashMap<Integer, Integer> mapRandom) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Xml> sortXml(List<Xml> xmlList) {
 		// TODO Auto-generated method stub
 		return null;
 	}
