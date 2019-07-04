@@ -32,17 +32,28 @@ public class SelectionSort implements Sort {
 
 		return resultList;
 	}
-
+	
 	@Override
-	public HashMap<Integer, Integer> sort(HashMap<Integer, Integer> mapRandom) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<Xml> sortXml(List<Xml> list) {
+		List<Xml> resultList = new ArrayList<Xml>();
+		if (list == null || list.size() == 0) {
+			return resultList;
+		}
 
-	@Override
-	public List<Xml> sortXml(List<Xml> xmlList) {
-		// TODO Auto-generated method stub
-		return null;
+		while (list.size() > 0) {
+			int minIndex = 0;
+			Xml min = list.get(minIndex);
+			for (int i = 1; i < list.size(); i++) {
+				Xml curr = list.get(i);
+				if (curr.compareTo(min) < 0) {
+					min = curr;
+					minIndex = i;
+				}
+			}
+			resultList.add(list.remove(minIndex));
+		}
+
+		return resultList;
 	}
 
 }

@@ -173,11 +173,6 @@ public class ThreadManager implements Runnable {
 		}
 		return -1;
 	}
-
-	private static HashMap<Integer, Integer> sort(HashMap<Integer, Integer> mapRandom, String sortType) {
-		SorterFactory sf = new SorterFactory();
-		return sf.getSortMethod(sortType).sort(mapRandom);
-	}
 	
 	private static List<Xml> sort(List<Xml> xmlList, String sortType) {
 		SorterFactory sf = new SorterFactory();

@@ -9,29 +9,8 @@ public class MergeSort implements Sort {
 
 	public MergeSort() {
 	}
-
-	public List<Integer> sort(List<Integer> list) {
-		if (isEmptyOrNull(list)) {
-			return list;
-		}
-
-		int size = list.size();
-
-		int[] array = new int[size];
-		for (int i = 0; i < size; i++) {
-			array[i] = list.get(i);
-		}
-
-		sortHelper(array, 0, list.size() - 1);
-
-		for (int i = 0; i < size; i++) {
-			list.set(i, array[i]);
-		}
-
-		return list;
-	}
-
-	private void sortHelper(int[] array, int f, int l) {
+	
+	private void sortHelper(Xml[] array, int f, int l) {
 		if (f < l) { // list can still be divided
 			int m = (f + l) / 2; // middle index
 			sortHelper(array, f, m);
@@ -40,11 +19,11 @@ public class MergeSort implements Sort {
 		}
 	}
 
-	private void mergeSortedLists(int[] array, int f, int m, int l) {
+	private void mergeSortedLists(Xml[] array, int f, int m, int l) {
 		int size1 = m - f + 1;
 		int size2 = l - m;
-		int[] a1 = new int[size1];
-		int[] a2 = new int[size2];
+		Xml[] a1 = new Xml[size1];
+		Xml[] a2 = new Xml[size2];
 
 		for (int i = 0; i < size1; i++) {
 			a1[i] = array[i + f]; // from f to (m-f+1)-1+f = m
@@ -59,7 +38,7 @@ public class MergeSort implements Sort {
 		int i = f; // current array index (start point f)
 
 		while (i1 < size1 && i2 < size2) {
-			if (a1[i1] <= a2[i2]) {
+			if (a1[i1].compareTo(a2[i2]) < 1) {
 				array[i] = a1[i1];
 				i1++;
 			} else {
@@ -84,19 +63,29 @@ public class MergeSort implements Sort {
 
 	}
 
-	private static boolean isEmptyOrNull(List<Integer> list) {
+	private static boolean isEmptyOrNull(List<Xml> list) {
 		return list == null || list.size() == 0;
 	}
-
+	
 	@Override
-	public HashMap<Integer, Integer> sort(HashMap<Integer, Integer> mapRandom) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<Xml> sortXml(List<Xml> list) {
+		if (isEmptyOrNull(list)) {
+			return list;
+		}
 
-	@Override
-	public List<Xml> sortXml(List<Xml> xmlList) {
-		// TODO Auto-generated method stub
-		return null;
+		int size = list.size();
+
+		Xml[] array = new Xml[size];
+		for (int i = 0; i < size; i++) {
+			array[i] = list.get(i);
+		}
+
+		sortHelper(array, 0, list.size() - 1);
+
+		for (int i = 0; i < size; i++) {
+			list.set(i, array[i]);
+		}
+
+		return list;
 	}
 }
