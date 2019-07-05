@@ -16,11 +16,11 @@ public class ThreadManager implements Runnable {
 	private String sortType;
 	private static ThreadManager instance;
 
-	private static final Integer RANDOM_BOUND = 1000000;
-	private static final Integer NUMBER_PER_FILE = 100000;
-	private static final String FILE_NAME_PREFIX = System.getProperty("user.home") + "/Desktop/XmlResults/xmlResult";
-	private static final String FILE_NAME_PREFIX_SORTED = System.getProperty("user.home")
-			+ "/Desktop/XmlResults/xmlResultSorted";
+	private static final Integer RANDOM_BOUND = 100000;
+	private static final Integer NUMBER_PER_FILE = 10000;
+	private static final String FILE_DIRECTORY = System.getProperty("user.home") + "/Desktop/XmlResultsFurkanOzcan/";
+	private static final String FILE_NAME_PREFIX = "xmlResult";
+	private static final String FILE_NAME_PREFIX_SORTED = "xmlResultSorted";
 	private static final String FILE_NAME_XML = ".xml";
 
 	private ThreadManager(Integer threadNumber, String sortType) {
@@ -49,13 +49,8 @@ public class ThreadManager implements Runnable {
 		// create unsorted xml
 		String xmlResult = createXmlRandomList(randomList);
 
-		// create file name
-		String completeFileName = FILE_NAME_PREFIX;
-		completeFileName = completeFileName.concat(iteration.toString());
-		completeFileName = completeFileName.concat(FILE_NAME_XML);
-
 		// writeToFile
-		writeToFile(completeFileName, xmlResult);
+		writeToFile(xmlResult, iteration, false);
 
 		// random list to Xml list
 		List<Xml> xmlList = createXmlListFromRandomList(randomList);
@@ -66,13 +61,8 @@ public class ThreadManager implements Runnable {
 		// TODO: write sortedList to file
 		String xmlResultSorted = createXmlSortedList(sortedXmlList);
 
-		// create sorted file name
-		String completeFileNameSorted = FILE_NAME_PREFIX_SORTED;
-		completeFileNameSorted = completeFileNameSorted.concat(iteration.toString());
-		completeFileNameSorted = completeFileNameSorted.concat(FILE_NAME_XML);
-
 		// writeToFile
-		writeToFile(completeFileNameSorted, xmlResultSorted);
+		writeToFile(xmlResultSorted, iteration, true);
 		long finishTime = System.currentTimeMillis();
 		System.out.println("Execution time for thread-" + iteration + ": " + (finishTime - startTime));
 
@@ -130,7 +120,16 @@ public class ThreadManager implements Runnable {
 		return stringBuilder.toString();
 	}
 
-	private static void writeToFile(String fileName, String result) {
+	private static void writeToFile(String result, Integer iteration, boolean isSorted) {
+		String directoryName = FILE_DIRECTORY;
+		File fileDirectory = new File(directoryName);
+		if (!fileDirectory.exists())
+			fileDirectory.mkdirs();
+		String fileNameType = isSorted ? FILE_NAME_PREFIX_SORTED : FILE_NAME_PREFIX;
+		String extension = iteration.toString() + FILE_NAME_XML;
+		
+		String fileName = directoryName + fileNameType + extension;
+		
 		File file = new File(fileName);
 		try {
 			FileWriter fileWriter = new FileWriter(file);
