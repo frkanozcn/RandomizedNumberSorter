@@ -1,6 +1,8 @@
 package testers;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -22,10 +24,16 @@ public class Tester {
 
 		System.out.println(sortType);
 
+		/*
 		for (int instance = 0; instance < NUMBER_OF_ITERATIONS; instance++) {
 			ThreadManager threadManager = ThreadManager.getInstance(instance, sortType);
 			threadManager.start();
 		}
+		*/
+		
+		ThreadManager threadManager = ThreadManager.getInstance(NUMBER_OF_ITERATIONS, sortType);
+		
+		threadManager.start();
 
 		// TODO: collect all HashMap's from all sorted files
 	}
